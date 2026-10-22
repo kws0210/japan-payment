@@ -20,6 +20,15 @@
 | [japan-payment/prepare/](japan-payment/prepare/) | 준비 가이드와 화면 이미지 |
 | [japan-payment/basis/](japan-payment/basis/) | 할인·수수료·점포 판정 근거 |
 | [_japan-payment-firebase/](<_japan-payment-firebase/>) | Firestore 규칙, 테스트, 운영 문서 |
+| [docs/CURRENT.md](docs/CURRENT.md) | 현재 결정 사항, 구현 규칙, 확인이 필요한 조건 |
+| [docs/HISTORY.md](docs/HISTORY.md) | 개발·조사·변경·배포 검증의 상세 이력 |
+
+## 프로젝트 기록
+
+작업을 이어갈 때는 [현재 현황과 결정 사항](docs/CURRENT.md)을 먼저 읽는다.
+[상세 기록](docs/HISTORY.md)에는 과거 가정과 정정·폐기 이유도 보존한다.
+쿠폰·수수료·점포 조사 문서는 현재 현황에서 바로 찾을 수 있다.
+기록의 개인 경로·대화 식별자는 공개본에서 제외했다.
 
 ## 로컬 실행
 
