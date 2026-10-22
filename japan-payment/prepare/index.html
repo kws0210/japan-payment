@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#f5f6f2" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<meta content="일본 여행 전 카카오페이 할인 쿠폰과 KB 유니온페이 카드를 준비하는 방법을 화면으로 확인한다." name="description"/>
+<title>미리 할 작업 · 일본 결제 도우미</title>
+<style>
+    :root { --ink:#20382e; --muted:#657267; --line:#e1e6dd; --green:#285d43; --paper:#f5f6f2; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:24px; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; -webkit-font-smoothing:antialiased; }
+    a,button,summary { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+    button { font:inherit; cursor:pointer; }
+    :focus-visible { outline:3px solid #679c77; outline-offset:4px; }
+    main { max-width:680px; margin:auto; padding:calc(23px + env(safe-area-inset-top)) 20px calc(30px + env(safe-area-inset-bottom)); }
+    .topline { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:31px; }
+    .back { display:inline-flex; align-items:center; min-height:44px; color:var(--green); text-decoration:none; font-size:13px; font-weight:650; }
+    .eyebrow { color:var(--muted); font-size:10px; font-weight:700; letter-spacing:1.5px; }
+    h1 { margin:0; font-size:35px; font-weight:760; letter-spacing:-1.5px; line-height:1.2; }
+    .intro { margin:13px 0 24px; color:var(--muted); font-size:15px; line-height:1.8; word-break:keep-all; }
+    .overview { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .overview a { display:block; padding:18px 15px; border:1px solid var(--line); border-radius:17px; background:#fff; color:var(--ink); text-decoration:none; }
+    .overview .kakao { background:#fff9d9; border-color:#ebe1ae; }
+    .overview .union { background:#edf3e8; border-color:#d5e0cc; }
+    .overview span { display:block; margin-bottom:13px; font-size:11px; font-weight:700; }
+    .overview strong { display:block; font-size:16px; line-height:1.5; letter-spacing:-.5px; word-break:keep-all; }
+    .overview small { display:block; margin-top:7px; font-size:11px; line-height:1.5; color:var(--muted); }
+    .guide-section { margin-top:38px; }
+    .section-label { margin:0 0 10px; color:var(--green); font-size:11px; font-weight:750; letter-spacing:1px; }
+    h2 { margin:0; font-size:24px; line-height:1.5; letter-spacing:-.8px; }
+    .section-intro { margin:8px 0 20px; color:var(--muted); font-size:14px; line-height:1.85; word-break:keep-all; }
+    .steps { padding:0; margin:0; list-style:none; counter-reset:step; }
+    .step-card { counter-increment:step; margin-top:14px; padding:21px; background:white; border:1px solid var(--line); border-radius:20px; }
+    .step-card h3 { display:flex; align-items:flex-start; gap:10px; margin:0 0 13px; font-size:17px; line-height:1.65; letter-spacing:-.5px; word-break:keep-all; }
+    .step-card h3::before { content:counter(step); display:grid; place-items:center; flex:none; width:25px; height:25px; margin-top:1px; border-radius:50%; background:#edf3e8; color:var(--green); font-size:12px; }
+    p { line-height:1.85; }
+    .step-card > p { margin:10px 0 0; font-size:14px; word-break:keep-all; }
+    .path { display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:12px; background:#f6f8f3; border-radius:11px; font-size:12px; font-weight:650; line-height:1.8; }
+    .path .arrow { color:#8d9a88; }
+    .note { color:var(--muted); font-size:12px !important; }
+    details { margin-top:17px; border-top:1px solid var(--line); }
+    summary { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:48px; padding:10px 0; color:var(--green); cursor:pointer; list-style:none; font-size:13px; font-weight:650; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"＋"; }
+    details[open] > summary::after { content:"−"; }
+    figure { margin:0; }
+    .screen-button { display:block; width:100%; max-width:286px; margin:2px auto 0; padding:0; border:1px solid #e5e9e2; border-radius:13px; background:#fff; overflow:hidden; cursor:zoom-in; }
+    .screen-button img { display:block; width:100%; height:auto; }
+    .payment-example { margin-top:18px; }
+    .walkthrough { padding:0; margin:20px 0 0; list-style:none; counter-reset:payment; }
+    .walkthrough > li { counter-increment:payment; margin-top:22px; padding-top:20px; border-top:1px solid var(--line); }
+    .walkthrough h4 { margin:0 0 10px; font-size:15px; line-height:1.7; letter-spacing:-.3px; }
+    .walkthrough h4::before { content:counter(payment, decimal-leading-zero) " / "; color:var(--green); }
+    .walkthrough p { margin:8px 0 0; font-size:14px; word-break:keep-all; }
+    .screen-button.country { max-width:none; }
+    figcaption { margin:10px 0 2px; color:var(--muted); text-align:center; font-size:11px; line-height:1.7; }
+    .coupons { display:grid; gap:14px; margin-top:18px; }
+    .coupon { min-width:0; padding:15px; border:1px solid #e1e7dc; border-radius:14px; background:#fafbf8; }
+    .coupon h4 { margin:0 0 12px; font-size:15px; }
+    .offer { margin:0 0 9px; font-size:14px; }
+    .offer strong { display:block; margin-bottom:2px; }
+    .offer span { color:var(--muted); font-size:12px; }
+    .coupon p:last-of-type { margin-bottom:0; }
+    .coupon details { margin-top:12px; }
+    .reminder { margin-top:18px; padding:16px; border:1px solid #ebe1ae; border-radius:13px; background:#fffae2; font-size:14px; line-height:1.8; word-break:keep-all; }
+    .reminder strong { display:block; margin-bottom:4px; }
+    .reminder p { margin:0; }
+    .reminder + .path { margin-top:16px; }
+    .checks { padding:0; margin:14px 0 0; list-style:none; }
+    .checks li { position:relative; margin-top:10px; padding-left:23px; font-size:14px; line-height:1.85; word-break:keep-all; }
+    .checks li::before { content:"✓"; position:absolute; left:0; color:var(--green); font-weight:750; }
+    .action-link { display:flex; justify-content:space-between; align-items:center; gap:10px; min-height:50px; margin-top:16px; padding:13px 15px; border:1px solid var(--green); border-radius:11px; background:var(--green); color:white; text-decoration:none; font-size:14px; font-weight:700; line-height:1.6; word-break:keep-all; }
+    .action-link.secondary { border-color:#d3decb; background:#f3f7ef; color:var(--green); }
+    .reference-link { color:var(--green); text-underline-offset:3px; }
+    .discount-example { width:100%; margin-top:14px; border-collapse:collapse; font-size:13px; line-height:1.7; }
+    .discount-example caption { margin-bottom:8px; text-align:left; font-weight:700; }
+    .discount-example th,.discount-example td { padding:10px 5px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    .discount-example th:last-child,.discount-example td:last-child { width:39%; text-align:right; }
+    .numbered-list { margin:14px 0 0; padding-left:23px; }
+    .numbered-list li { margin-top:10px; padding-left:3px; font-size:14px; line-height:1.85; word-break:keep-all; }
+    .benefit-summary { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:18px 0; }
+    .benefit-summary div { padding:13px; border:1px solid #dbe4d4; border-radius:12px; background:#edf3e8; }
+    .benefit-summary dt { color:var(--muted); font-size:11px; line-height:1.6; }
+    .benefit-summary dd { margin:4px 0 0; font-size:16px; font-weight:750; line-height:1.6; }
+    .event-period { margin:0; color:var(--muted); font-size:12px; line-height:1.8; }
+    .next { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:32px; min-height:55px; padding:16px 20px; border-radius:14px; color:white; background:var(--green); text-decoration:none; font-size:14px; font-weight:700; }
+    footer { margin-top:23px; color:var(--muted); font-size:11px; line-height:1.8; text-align:center; }
+    dialog { width:calc(100% - 20px); max-width:720px; max-height:calc(100dvh - 20px); margin:auto; padding:0; border:0; border-radius:15px; color:var(--ink); background:var(--paper); }
+    dialog::backdrop { background:#10241cbb; }
+    .zoom-bar { position:sticky; z-index:1; top:0; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 14px; background:var(--paper); border-bottom:1px solid var(--line); }
+    .zoom-bar h2 { font-size:14px; }
+    #close-screen { flex:none; min-width:55px; min-height:44px; padding:6px 10px; border:1px solid #d1d9cb; border-radius:9px; color:var(--ink); background:white; font-size:13px; }
+    #zoom-image { display:block; width:100%; height:auto; }
+    @media (min-width:620px) { .coupons { grid-template-columns:1fr 1fr; } }
+    @media (max-width:359px) { main { padding-left:15px; padding-right:15px; } .step-card { padding:17px; } .overview a { padding:15px 12px; } .overview strong { font-size:15px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+.task-list { list-style:none; padding:0; margin:12px 0 0; }
+.task-card { margin:10px 0 0; padding:0 17px; border:1px solid var(--line); border-radius:14px; background:white; }
+.task-card > summary { min-height:65px; color:var(--ink); font-size:15px; line-height:1.6; }
+.task-card > summary span { display:block; }
+.task-card > summary small { display:block; font-size:11px; font-weight:400; color:var(--muted); }
+.task-body { padding:0 0 16px; font-size:14px; }
+.task-body p { margin:8px 0 12px; }
+.task-body h3 { font-size:15px; }
+.task-body ol,.task-body ul { padding-left:20px; line-height:1.9; }
+.guide-section { margin-top:24px; }
+.guide-section h2 { font-size:17px; }
+.topline { margin-bottom:20px; }
+.intro { font-size:14px; margin-bottom:15px; }
+.overview a { padding:9px 12px; border-radius:10px; font-size:12px; }
+.overview span { margin:0; }
+.action-link { margin-top:10px; min-height:45px; font-size:13px; }
+.numbered-list li { font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="topline">
+<a class="back" href="../">← 결제 도우미</a>
+<span class="eyebrow">BEFORE YOU PAY</span>
+</div>
+<h1>미리 할 작업</h1>
+<p class="intro">필요한 항목만 펼쳐서 준비한다.</p>
+
+</header>
+<section class="guide-section" id="kakaopay">
+<h2>카카오페이</h2>
+<ol class="task-list">
+<li>
+<details class="task-card" id="kakao-payment-example">
+<summary>
+<span>일본 페이머니 준비<small>국가를 일본으로 바꾸고 잔액 준비</small>
+</span>
+</summary>
+<div class="task-body">
+<p>카카오페이 → <b>결제</b> → 상단 <b>태극기 버튼</b> → <b>일본</b>을 선택한다.<br/>마지막 화면의 <b>일본 · Alipay+ · 페이머니</b>를 확인하고 잔액을 준비한다.</p>
+<a class="action-link" href="https://link.kakaopay.com/p/payment" id="kakao-payment-entry" rel="noopener noreferrer" target="_blank">
+<span>카카오페이 결제 열기</span>
+<span aria-hidden="true">↗</span>
+</a>
+<details>
+<summary>카카오페이 여는 화면</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="카카오톡에서 카카오페이 열기" href="images/kakao-entry.webp">
+<img alt="카카오톡 더보기 화면. 주황색 1번은 하단 더보기 버튼, 2번은 상단 노란색 pay 잔액 영역을 가리킨다." fetchpriority="high" height="2048" src="images/kakao-entry.webp" width="946"/>
+</a>
+<figcaption>1번 → 2번 순서로 누른다. 이미지를 누르면 크게 볼 수 있다.</figcaption>
+</figure>
+</details>
+<details>
+<summary>1. 결제 메뉴 누르기</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="카카오페이 결제 → 노란 결제하기 버튼" href="images/kakao-payment-open.webp">
+<img alt="카카오페이 해외 혜택 화면. 하단 결제 메뉴 바로 위에 노란색 결제하기 버튼이 있다." height="2048" loading="lazy" src="images/kakao-payment-open.webp" width="946"/>
+</a>
+<figcaption>화면 아래 노란색 ‘결제하기’ 버튼을 누른다.</figcaption>
+</figure>
+</details>
+<details>
+<summary>2. 태극기 버튼 → 일본 선택</summary>
+<figure class="payment-example">
+<a class="screen-button country" data-screen="" data-title="주황색으로 표시한 태극기 버튼 → 일본 선택" href="images/kakao-payment-country.webp">
+<img alt="결제 화면 상단을 발췌했다. pay 로고 오른쪽의 태극기 모양 국가 선택 버튼을 주황색 원으로 표시했다." height="270" loading="lazy" src="images/kakao-payment-country.webp" width="946"/>
+</a>
+<figcaption>주황색 원의 태극기 버튼을 눌러 일본으로 변경한다.</figcaption>
+</figure>
+</details>
+<details>
+<summary>3. 일본 페이머니 화면 확인</summary>
+<figure class="payment-example">
+<a class="screen-button" data-screen="" data-title="마지막 확인: 일본 · Alipay+ · 페이머니" href="images/kakao-japan-payment.webp" id="kakao-payment-screen">
+<img alt="일본으로 변경한 실제 카카오페이 결제 화면. 위쪽에 Alipay+와 일본, 아래쪽에 결제 가능한 잔액과 페이머니가 표시된다. 개인 충전계좌 정보는 가렸다." height="2048" loading="lazy" src="images/kakao-japan-payment.webp" width="946"/>
+</a>
+<figcaption>일본 + Alipay+ + 페이머니 표시를 확인한다.<br/>개인 충전계좌 정보는 가린 화면이다.</figcaption>
+</figure>
+</details>
+</div>
+</details>
+</li>
+<li>
+<details class="task-card" id="donki-coupon">
+<summary>
+<span>결제 할인 쿠폰 받기<small>돈키호테 2,000엔 · 간사이공항 1,200엔</small>
+</span>
+</summary>
+<div class="task-body">
+<p>
+<b>결제 → 해외 · 일본 → 현지 쿠폰 받기</b>에서 이용할 매장의 <b>지금 받기</b>를 누른다.</p>
+<ul>
+<li>돈키호테: 15,000엔 이상 → 2,000엔 할인</li>
+<li id="airport-coupon">간사이공항: 10,000엔 이상 → 1,200엔 할인</li>
+</ul>
+<a class="action-link" href="https://link.kakaopay.com/p/payment" id="kakao-coupon-entry" rel="noopener noreferrer" target="_blank">
+<span>카카오페이 열고 쿠폰 찾기</span>
+<span aria-hidden="true">↗</span>
+</a>
+<details>
+<summary>현지 쿠폰 받기 메뉴</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="해외 · 일본에서 현지 쿠폰 열기" href="images/kakao-overseas.webp">
+<img alt="카카오페이 화면. 하단 결제, 상단 해외, 현지 쿠폰 받기 메뉴에 주황색 표시가 있으며 국가가 일본으로 표시된다." height="2048" loading="lazy" src="images/kakao-overseas.webp" width="946"/>
+</a>
+<figcaption>결제 → 해외 → 일본 확인 → 현지 쿠폰 받기</figcaption>
+</figure>
+</details>
+<details>
+<summary>돈키호테 쿠폰 화면</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="돈키호테 쿠폰 받기" href="images/kakao-donki-coupons.webp">
+<img alt="A+ REWARDS의 Don Quijote 쿠폰. 최대 7% 할인은 최소 10,000엔, 2,000엔 할인은 최소 15,000엔이며 각각 지금 받기 버튼이 있다." height="2048" loading="lazy" src="images/kakao-donki-coupons.webp" width="946"/>
+</a>
+<figcaption>Don Quijote의 ‘지금 받기’ 버튼</figcaption>
+</figure>
+</details>
+<details>
+<summary>간사이공항 쿠폰 화면</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="간사이공항 쿠폰 받기" href="images/kakao-airport-coupon.webp">
+<img alt="A+ REWARDS의 Kansai International Airport 쿠폰. KIX 1,200엔 할인, 최소 거래 금액 10,000엔이며 지금 받기 버튼이 있다." height="2048" loading="lazy" src="images/kakao-airport-coupon.webp" width="946"/>
+</a>
+<figcaption>Kansai International Airport의 ‘지금 받기’ 버튼</figcaption>
+</figure>
+</details>
+</div>
+</details>
+</li>
+<li>
+<details class="task-card" id="donki-store-coupon">
+<summary>
+<span>돈키호테 최대 7% 쿠폰 받기<small>돈키호테 이용 시 · 결제 전에 점원에게 제시</small>
+</span>
+</summary>
+<div class="task-body">
+<p>같은 현지 쿠폰 메뉴에서 <b>최대 7% 할인 Don Quijote</b>를 받는다.<br/>
+<b>살짝 밀어서 사용 → 지금 사용하기</b>는 미리 누르지 않고 <b>계산대에서 직원과 함께</b> 진행한다. 캡처 화면은 사용할 수 없다.</p>
+<details>
+<summary>쿠폰 상세 화면</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="A+ REWARDS 최대 7% 쿠폰 상세" href="images/kakao-donki-max7-detail.webp">
+<img alt="최대 7% 할인 Don Quijote 쿠폰 상세. 최소 결제 금액 10,000엔, 살짝 밀어서 사용 버튼과 이용 약관이 표시된다." height="2048" loading="lazy" src="images/kakao-donki-max7-detail.webp" width="946"/>
+</a>
+<figcaption>일본 도착 후 수령하고 결제 전에 직원에게 제시한다.</figcaption>
+</figure>
+</details>
+<details>
+<summary>사용 버튼 주의사항</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="지금 사용하기는 결제 현장에서만" href="images/kakao-donki-max7-redeem.webp">
+<img alt="지금 교환하시겠습니까 팝업. 지금 사용 버튼을 누르면 쿠폰이 즉시 확인 완료로 변경되니 주의하라는 안내와 지금 사용하기·나중에 버튼이 있다." height="2048" loading="lazy" src="images/kakao-donki-max7-redeem.webp" width="946"/>
+</a>
+<figcaption>미리 교환하지 않고 결제 현장에서 직원과 진행한다.</figcaption>
+</figure>
+</details>
+<details>
+<summary>쿠폰 약관 화면</summary>
+<figure>
+<a class="screen-button" data-screen="" data-title="최대 7% 쿠폰 이용 약관" href="images/kakao-donki-max7-terms.webp">
+<img alt="최대 7% 쿠폰 약관. 거래당 1회, 알리페이 프로모션 중복 가능, 돈키호테 자체 프로모션 중복 불가, 제외 상품과 캡처 사용 불가가 명시된다." height="2048" loading="lazy" src="images/kakao-donki-max7-terms.webp" width="946"/>
+</a>
+<figcaption>제공된 실제 쿠폰 약관을 기준으로 안내한다.</figcaption>
+</figure>
+</details>
+<p class="note">계산기 설정에 보유 여부와 쿠폰에 표시된 구간 할인율을 저장한다.<br/>
+<a class="reference-link" href="../basis/#stack-evidence">쿠폰 계산 기준 보기 ↗</a>
+</p>
+</div>
+</details>
+</li>
+</ol>
+</section>
+<section class="guide-section" id="unionpay">
+<h2>KB 유니온페이</h2>
+<ol class="task-list">
+<li>
+<details class="task-card" id="kb-card">
+<summary>
+<span>KB 유니온페이 실물 카드 준비<small>보유 중이면 발급 생략</small>
+</span>
+</summary>
+<div class="task-body">
+<p>
+<b>노리 체크카드 · UnionPay(은련)</b>를 기준으로 안내한다.<br/>신청 화면에서 국제브랜드를 <b>UnionPay</b>로 선택한다. 이미 대상 KB 개인 신용·체크카드가 있으면 새로 발급받지 않아도 된다.</p>
+<a class="action-link" href="https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=01664" id="kb-card-apply" rel="noopener noreferrer" target="_blank">
+<span>노리 체크카드 발급·신청</span>
+<span aria-hidden="true">↗</span>
+</a>
+</div>
+</details>
+</li>
+<li>
+<details class="task-card" id="kb-registration">
+<summary>
+<span>일본 10% 행사 등록<small>카드 등록 후 ‘선택확인’까지</small>
+</span>
+</summary>
+<div class="task-body">
+<a class="action-link" href="https://marketing.unionpayintl.com/offer-promote/?language=kr&amp;insCode=299990156#/offer?offerNo=260819112751" id="union-registration" rel="noopener noreferrer" target="_blank">
+<span>일본 10% 행사 등록하기</span>
+<span aria-hidden="true">↗</span>
+</a>
+<ol>
+<li>등록하기 → <b>SMS 인증 코드로 로그인</b>을 누른다.</li>
+<li>국가번호 <b>+82</b>를 선택하고 문자 인증을 진행한다.</li>
+<li>카드번호 등록 → 사용할 카드 선택 → <b>선택확인</b>을 누른다.</li>
+<li>이벤트 수령 기록에서 등록 완료를 확인하고 <b>약 2분 뒤</b> 결제한다.</li>
+</ol>
+<p class="note">50달러 이상 현지 실물 카드 결제 · 10% 할인 · 건당 최대 20달러 · 최대 3회.<br/>2026. 9. 14. ~ 12. 31., 예산 소진 시 종료.</p>
+<a class="action-link" href="https://m.unionpayintl.com/cardholderServ/serviceCenter/merchant/1210618403647?type=1" id="union-official-event" rel="noopener noreferrer" target="_blank">
+<span>공식 행사 조건 보기</span>
+<span aria-hidden="true">↗</span>
+</a>
+</div>
+</details>
+</li>
+<li>
+<details class="task-card" id="union-donki">
+<summary>
+<span>돈키호테 전용 혜택 준비<small>매장 쿠폰 받기 · 4,000엔 행사는 별도 등록</small>
+</span>
+</summary>
+<div class="task-body">
+<a class="action-link" href="https://japanportal.donki-global.com/coupon/cp001_ko.html" id="union-donki-coupon" rel="noopener noreferrer" target="_blank">
+<span>유니온페이 전용 매장 쿠폰 받기</span>
+<span aria-hidden="true">↗</span>
+</a>
+<p>쿠폰 바코드가 표시되는지 확인하고 <b>결제 전에 점원에게 보여준다.</b> 표시되지 않으면 아래 KB 안내의 쿠폰다운으로 다시 들어간다.</p>
+<a class="action-link" href="https://marketing.unionpayintl.com/offer-promote/?language=kr&amp;insCode=299990156#/offer?offerNo=260907112832" id="union-donki-registration" rel="noopener noreferrer" target="_blank">
+<span>돈키호테 4,000엔 행사 별도 등록</span>
+<span aria-hidden="true">↗</span>
+</a>
+<p>위 10% 행사와 <b>별도로</b> 문자 인증 → 카드 등록 → 사용할 카드 <b>선택확인</b>까지 마친다.</p>
+<p class="note">쿠폰 후 40,000엔 이상이면 4,000엔, 10,000엔 이상 500엔 행사는 등록 없이 비교한다. 각 최대 3회·하루 1회다. 계산기 팝업에서 지점을 선택하면 대상 여부를 자동 반영한다.</p>
+<a class="action-link" href="https://card.kbcard.com/BON/DVIEW/HBBMCXCRVNEC0001?mainCC=a&amp;eventNum=1002289" id="kb-japan-event" rel="noopener noreferrer" target="_blank">
+<span>KB 전체 행사·쿠폰다운</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a class="action-link" href="https://m.unionpayintl.com/cardholderServ/serviceCenter/wap/merchant/121795293892?type=1" id="union-donki-official" rel="noopener noreferrer" target="_blank">
+<span>전용 행사 공식 조건</span>
+<span aria-hidden="true">↗</span>
+</a>
+</div>
+</details>
+</li>
+</ol>
+</section>
+<section class="guide-section">
+<h2>마지막 준비</h2>
+<ol class="task-list">
+<li>
+<details class="task-card" id="travel">
+<summary>
+<span>트래블월렛 엔화 충전<small>부족한 잔액을 미리 준비</small>
+</span>
+</summary>
+<div class="task-body">
+<p>트래블월렛 앱에서 일본 엔화(JPY) 잔액을 충전하고 카드를 활성화한다.<br/>엔화 환전·해외 결제 수수료는 0%다. 원화 지출 비교에는 실제 충전 환율을 사용한다.</p>
+<a class="action-link" href="https://www.travel-wallet.com/" id="travel-official" rel="noopener noreferrer" target="_blank">
+<span>트래블월렛 공식 안내</span>
+<span aria-hidden="true">↗</span>
+</a>
+</div>
+</details>
+</li>
+<li>
+<details class="task-card" id="calculator-settings">
+<summary>
+<span>받은 쿠폰·등록 상태 저장<small>계산기 상단 설정에서 한 번 저장</small>
+</span>
+</summary>
+<div class="task-body">
+<p>계산기에 로그인한 뒤 <b>설정</b>에서 실제 보유 카드·쿠폰과 완료한 행사 등록만 선택한다.<br/>
+<b>저장하고 계산하기</b>를 누르면 준비가 끝난다.</p>
+</div>
+</details>
+</li>
+</ol>
+</section>
+<a class="next" href="../">
+<span>준비 완료 · 계산하러 가기</span>
+<span aria-hidden="true">→</span>
+</a>
+<footer>
+<a class="reference-link" href="../basis/">할인·수수료 계산 기준과 공식 근거</a>
+<br/>2026. 10. 22. 기준 · 로그인 없이 확인 가능</footer>
+</main>
+<dialog aria-labelledby="screen-title" id="screen-dialog">
+<div class="zoom-bar">
+<h2 id="screen-title">가이드 화면</h2>
+<button autofocus="" id="close-screen" type="button">닫기</button>
+</div>
+<img alt="" id="zoom-image"/>
+</dialog>
+<script>
+    'use strict';
+    const screenDialog = document.getElementById('screen-dialog');
+    const zoomImage = document.getElementById('zoom-image');
+    document.querySelectorAll('[data-screen]').forEach(link => {
+      link.addEventListener('click', event => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || typeof screenDialog.showModal !== 'function') return;
+        event.preventDefault();
+        zoomImage.src = link.href;
+        zoomImage.alt = link.querySelector('img').alt;
+        document.getElementById('screen-title').textContent = link.dataset.title;
+        screenDialog.showModal();
+        screenDialog.scrollTop = 0;
+      });
+    });
+    document.getElementById('close-screen').addEventListener('click', () => screenDialog.close());
+    screenDialog.addEventListener('click', event => {
+      if (event.target !== screenDialog) return;
+      const bounds = screenDialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) screenDialog.close();
+    });
+
+    function openAnchor() {
+      const id = decodeURIComponent(location.hash.slice(1));
+      if (['stack-evidence','payment-costs'].includes(id)) { location.replace('../basis/#' + id); return; }
+      const target = document.getElementById(id);
+      if (!target) return;
+      let parent = target;
+      while (parent) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
+      requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+    }
+    window.addEventListener('hashchange', openAnchor);
+    openAnchor();
+</script>
+</body>
+</html>

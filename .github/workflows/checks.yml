@@ -1,0 +1,25 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  payment-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: _japan-payment-firebase
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Recommendation tests
+        run: npm run test:recommendation
+      - name: Exchange rate tests
+        run: npm run test:rates
